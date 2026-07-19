@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: champion-rush-control
+    runtime: node
+    plan: free
+    buildCommand: npm ci --ignore-scripts --no-audit --no-fund && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22.14.0
+      - key: HOST
+        value: 0.0.0.0
